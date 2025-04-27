@@ -2,17 +2,10 @@ steps:
   deploy:
     image: appleboy/ssh
     settings:
-      host: 
+      host: 82.29.153.167
       username: root
-      key: 82.29.153.167
-        -----BEGIN OPENSSH PRIVATE KEY-----
-        b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABAWztDCEP
-        dKSiIhq6LlakQJAAAAGAAAAAEAAAAzAAAAC3NzaC1lZDI1NTE5AAAAIIpZMzzRr1XlqLBH
-        5DWuzvNC0tIA9sVFwa+AVGNICebcAAAAkJUIK1eYzYDWqPEx9Rb/qOrp9v+pbCcG9/IvAU
-        lrL8ulhTcdQgHgfn59GQVQNLefPHAqt5AokkOEbD0YTomqXrlU+WoPVddqUyRbCL5TXX5V
-        jvgT4jfu1T8GbQzEBEQh9LNhm4CXHeoBY209cXS+6OBkpote3HpteJEZ1aZqfaQThKOwQ2
-        9GDfHCiD/wW9THnw==
-        -----END OPENSSH PRIVATE KEY-----
+      key:
+        from_secret: ssh_key
       script:
         - cd /home/BudgetBridge
         - git pull origin main
