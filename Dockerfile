@@ -1,14 +1,18 @@
-# Use official Python runtime as base image
-FROM python:3.12-slim
+# Use an official Python image
+FROM python:3.11-slim
 
-# Set working directory in container
-WORKDIR /home/BudgetBridge
+# Set working directory inside container
+WORKDIR /app
 
-# Install dependencies
+# Copy files into container
+COPY requirements.txt .
+COPY app.py .
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 5000 available
+# Expose port
 EXPOSE 5000
 
-# Run the application
+# Command to run the app
 CMD ["python", "app.py"]
