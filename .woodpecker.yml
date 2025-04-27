@@ -1,6 +1,7 @@
 pipeline:
   default:
-  commands:
+    image: alpine
+    commands:
       - cd /home/BudgetBridge
       - git pull
       - source venv/bin/activate
