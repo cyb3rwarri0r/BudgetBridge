@@ -1,8 +1,8 @@
-pipeline:
-  default:
+steps:
+  deploy:
     image: alpine
     commands:
       - cd /home/BudgetBridge
       - git pull
       - source venv/bin/activate
-      - sudo systemctl restart BudgetBridge
+      - sudo systemctl restart BudgetBridge.service
