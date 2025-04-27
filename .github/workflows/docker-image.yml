@@ -1,0 +1,41 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Docker Image
+      run: |
+        docker build -t BudgetBridge .
+
+    - name: Run Docker Container
+      run: |
+        docker run -d -p 5000:5000 --name BudgetBridge-Container BudgetBridge
+
+    - name: Wait for Flask App to Start
+      run: |
+        sleep 10
+
+    - name: Test Flask App Endpoint
+      run: |
+        curl --fail http://localhost:5000 || exit 1
+
+    - name: Clean up Container
+      run: |
+        docker stop BudgetBridge-container
+        docker rm BudgetBridge-container
