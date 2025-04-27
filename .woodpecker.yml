@@ -1,6 +1,6 @@
 pipeline:
-  deploy:
-    commands:
+  default:
+  commands:
       - cd /home/BudgetBridge
       - git pull
       - source venv/bin/activate
