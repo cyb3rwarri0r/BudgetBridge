@@ -10,3 +10,10 @@ steps:
         - cd /home/BudgetBridge
         - git pull origin main
         - sudo systemctl restart BudgetBridge.service
+    when:
+      event: 
+        - push
+        - tag
+        - pull_request
+        - deployment
+      branch: main
