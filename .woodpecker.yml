@@ -1,11 +1,7 @@
 pipeline:
   deploy:
-    image: appleboy/ssh
     commands:
       - cd /home/BudgetBridge
       - git pull
       - source venv/bin/activate
       - sudo systemctl restart BudgetBridge
-    settings:
-      host: 82.29.153.167
-      username: woodpecker-ci
